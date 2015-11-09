@@ -29,11 +29,20 @@ void loop()
     Serial.println(temperatureF);
     
     lcd.begin(16, 2);
+
 //    lcd.setRGB(colorR, colorG, colorB);
 
     dtostrf(temperatureF, 3, 2, outstr);
     lcd.setCursor(0,0);
     //lcd.print(String("Temperature:") += String(temperatureF);
+    if (temperatureF < 71) {
+      lcd.setRGB(0, 0, 255);
+    }
+    else {
+        lcd.setRGB(255, 0, 0);    
+    }
+    
+    
     lcd.print(String("Temperature:"));
     lcd.setCursor(0,1);
     lcd.print(String(temperatureF));
